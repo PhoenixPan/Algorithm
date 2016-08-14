@@ -18,3 +18,7 @@ All operations are still O(1) as we do not use the slow O(N) remove tail operati
 Each vertex contains two links that refer to the previous and the next vertex.
 
 All operations are O(1) except search/insert kth/remove kth, which are O(N). Notice that the remove tail operation is now O(1) in Doubly Linked List.
+
+##Double-ended Queue (Deque)
+Generalizes a queue, add or remove from either head or tail. Simply a protected Doubly-linked List.
+All operations are O(1).
