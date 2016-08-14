@@ -1,5 +1,3 @@
-
-
 ##Single Linked List
 All operations are O(1) except search/insert kth/remove tail (slow as it has to keep the tail pointer correct)/remove kth, which are O(N).
 
