@@ -22,3 +22,9 @@ All operations are O(1) except search/insert kth/remove kth, which are O(N). Not
 ##Double-ended Queue (Deque)
 Generalizes a queue, add or remove from either head or tail. Simply a protected Doubly-linked List.
 All operations are O(1).
+
+
+#####Question 1: What are the computational complexity of these structures?
+#####Question 2: In which of these structures, edges are directed? Which are not?
+
+
