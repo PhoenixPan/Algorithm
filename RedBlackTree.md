@@ -8,6 +8,9 @@ https://en.wikipedia.org/wiki/Red%E2%80%93black_tree
 while watching this video    
 https://www.youtube.com/watch?v=vDHFF4wjWYU  
 
+Questions  
+1. When to change the color only;    
+2. When to change the color and rotate;  
 
 # Java Implementation:
 ## Node
