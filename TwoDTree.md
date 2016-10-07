@@ -1,7 +1,7 @@
 # Preface
 This is a school project that has special requirements, causing low efficiency and poor implementation.
 
-# Node 
+## Node 
 ```
 /**
  * Class for nodes in the two D tree.
@@ -113,7 +113,7 @@ public class TwoDTreeNode {
 }
 ```
 
-# Tree
+## Tree
 ```
 public class TwoDTree {
 
