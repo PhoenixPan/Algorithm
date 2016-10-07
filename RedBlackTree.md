@@ -368,3 +368,28 @@ public class RedBlackTree {
 	}
 }
 ```
+## Test main function
+```
+public class Main {
+
+	public static void main(String[] args) {
+		RedBlackTree tree = new RedBlackTree();
+		tree.insert("A", "10");
+		tree.insert("B", "85");
+		tree.insert("C", "15");
+		tree.insert("D", "70");
+		tree.insert("E", "20");
+		tree.insert("E", "30");  // Reset the value of key "E"
+		
+		System.out.println("Stert to traverse the tree:");
+		tree.inOrderTraversal(tree.root);
+		
+		System.out.println("\nStert to look up keys:");
+		System.out.println("Value found from key \"E\":" + tree.lookup("E", tree));
+		System.out.println("Value found from key \"R\":" + tree.lookup("R", tree));
+
+	}
+}
+
+```
+
