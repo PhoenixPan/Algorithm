@@ -306,12 +306,10 @@ public class RedBlackTree {
 	private void ifContain(String key, RedBlackNode node) {
 		if (key.equals(node.getKey())) {
 			contains = true;
-		} else if (node.getLc() != nil) {
-			if (key.compareTo(node.getKey()) < 0)
-				ifContain(key, node.getLc());
-			else
-				ifContain(key, node.getRc());
-		}
+		} else if (node.getLc() != nil && key.compareTo(node.getKey()) < 0) {
+			ifContain(key, node.getLc());
+		} else if (node.getRc() != nil && key.compareTo(node.getKey()) >= 0)
+			ifContain(key, node.getRc());
 	}
 
 	/**
@@ -323,9 +321,9 @@ public class RedBlackTree {
 	 *            Node to start.
 	 * @return The value of the key or null.
 	 */
-	public String lookup(String key, RedBlackTree tree) {
+	public String lookup(String key) {
 		lookupResult = null;
-		findValue(key, tree.root);
+		findValue(key, this.root);
 		return lookupResult;
 	}
 
@@ -341,12 +339,11 @@ public class RedBlackTree {
 	private void findValue(String key, RedBlackNode node) {
 		if (key.equals(node.getKey())) {
 			lookupResult = node.getValue();
-		} else if (node.getLc() != nil) {
-			if (key.compareTo(node.getKey()) < 0)
-				findValue(key, node.getLc());
-			else
-				findValue(key, node.getRc());
-		}
+			return;
+		} else if (node.getLc() != nil && key.compareTo(node.getKey()) < 0) {
+			findValue(key, node.getLc());
+		} else if (node.getRc() != nil && key.compareTo(node.getKey()) >= 0)
+			findValue(key, node.getRc());
 	}
 
 	/**
@@ -362,37 +359,11 @@ public class RedBlackTree {
 	private void resetValue(String key, String value, RedBlackNode node) {
 		if (key.equals(node.getKey())) {
 			node.setValue(value);
-		} else if (node.getLc() != nil) {
-			if (key.compareTo(node.getKey()) < 0)
-				resetValue(key, value, node.getLc());
-			else
-				resetValue(key, value, node.getRc());
-		}
+		} else if (node.getLc() != nil && key.compareTo(node.getKey()) < 0) {
+			resetValue(key, value, node.getLc());
+		} else if (node.getRc() != nil && key.compareTo(node.getKey()) >= 0)
+			resetValue(key, value, node.getRc());
 	}
 }
-```
-## Test main function
-```
-public class Main {
-
-	public static void main(String[] args) {
-		RedBlackTree tree = new RedBlackTree();
-		tree.insert("A", "10");
-		tree.insert("B", "85");
-		tree.insert("C", "15");
-		tree.insert("D", "70");
-		tree.insert("E", "20");
-		tree.insert("E", "30");  // Reset the value of key "E"
-		
-		System.out.println("Stert to traverse the tree:");
-		tree.inOrderTraversal(tree.root);
-		
-		System.out.println("\nStert to look up keys:");
-		System.out.println("Value found from key \"E\":" + tree.lookup("E", tree));
-		System.out.println("Value found from key \"R\":" + tree.lookup("R", tree));
-
-	}
-}
-
 ```
 
