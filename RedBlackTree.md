@@ -12,6 +12,10 @@ Questions
 1. When to change the color only;    
 2. When to change the color and rotate;  
 
+
+1. If both parent and uncle are red, simple make them black and the grandparent red (black in case of root node);  
+
+
 # Java Implementation:
 ## Node
 ```
