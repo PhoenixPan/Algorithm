@@ -14,6 +14,8 @@ Questions
 
 
 1. If both parent and uncle are red, simple make them black and the grandparent red (black in case of root node);  
+2. In case 5, first change the children node color to red before considering about further rotation;  
+![figure1](https://cloud.githubusercontent.com/assets/14355257/19221937/de04fe42-8e1a-11e6-91f7-9054c986134a.png)
 
 
 # Java Implementation:
