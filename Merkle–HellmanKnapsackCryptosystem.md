@@ -19,11 +19,40 @@ w[i] = w[i] * r % q
 
 β = {295, 592, 301, 14, 28, 353, 120, 236}
 ```
-For the message to encrypt, we firstly translate each letter to binary. As a result, we can process message that has lenth of w.length / 8. Assume the first letter is 'a', then we have 0110001. 
+To encrypt, we firstly translate each letter in the message to binary. As a result, the maximum length for the message that we can process is w.length / 8. Assume the first letter is 'a', then we have 0110001. We multiply each number with the corresponding number in β:  
+```
+a = 01100001
+0 * 295
++ 1 * 592
++ 1 * 301
++ 0 * 14
++ 0 * 28
++ 0 * 353
++ 0 * 120
++ 1 * 236
+= 1129 
+```
+To decrypt, multiplies the sum by r^−1 mod q (Modular inverse):  
+```
+decryptKey = encryptSum.multiply(r.modInverse(q)).mod(q);
+1129 * 442 mod 881 = 372
+```
+Substract this figure using numbers from w, if the operation is valid, mark this position with 1, otherwise 0:  
+```
+w = {2, 7, 11, 21, 42, 89, 180, 354}
+372 - 354 = 18
+18 - 11 = 7
+7 - 7 = 0
 
+w[7] = 1
+w[2] = 1
+w[1] = 1
+01100001
+```
+Transfer the binary back to character, we now have the original message 'a'. If there are more letters in the message, use the next eight numbers in w to perform the same operation. For example, for the second letter, using w[8] to w[15].
 
-
-
+##Example 
+Key with 640 BigInteger that can process a message of 80 characters  
 ```
 import java.math.BigInteger;
 import java.util.Scanner;
