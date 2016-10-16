@@ -1,4 +1,26 @@
-# Use LinkedList to implement Merkle–Hellman knapsack cryptosystem
+# Merkle–Hellman knapsack cryptosystem
+
+First, create a superincreasing sequence, w:  
+```
+w = {2, 7, 11, 21, 42, 89, 180, 354}
+```
+Second, get the sum of the sequence and find a q, which should be larger than the sum. 
+```
+wSum = 706
+q = 881
+```
+Also find a r, which is between (1, q) and coprime to q:     
+```
+r = 588
+```
+Now we have the private key, which consists of w, q, r. To generate the public key β, manipulate each element in w as:  
+```
+w[i] = w[i] * r % q
+
+β = {295, 592, 301, 14, 28, 353, 120, 236}
+```
+For the message to encrypt, we firstly translate each letter to binary. As a result, we can process message that has lenth of w.length / 8. Assume the first letter is 'a', then we have 0110001. 
+
 
 
 
