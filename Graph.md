@@ -42,6 +42,8 @@ MST-Prim(G,w,r)
   
 ## One Dynamic Programming: Floyd Warshall  
 
+![image](https://cloud.githubusercontent.com/assets/14355257/19502121/9d256e42-9578-11e6-8773-6cb232a891f0.png)
+
 Sudo code:  
 ```
 for each vertex u in G do
