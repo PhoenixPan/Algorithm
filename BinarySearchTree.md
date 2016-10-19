@@ -7,6 +7,11 @@ In a complete tree:
 Number of leafs: (n+1) /2  
 Number of internal nodes: N – above = (n-1)/2  
 
+#####Heap
+1. A heap is a complete binary tree, where each node is greater than or equal to its children.
+2. Reheapification upward: add new node by swapping with parent.
+3. Reheapification downward: delete the top node by replacing it with the last node and then swap that node with its smaller (min heap) or larger (max heap) children.
+
 
 ## Java Implementation
 Tree
