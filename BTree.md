@@ -1,7 +1,7 @@
 # B-Tree
 Characteristics:  
 1.	Root may have 0 or 1 element to MAX, other nodes have at least MIN elements  
-2.	MAX = 2MIN  
+2.	Space in one node: maximum = 2 * minimum  
 3.	Elements in a node are stored in a sorted array, from the smallest to the largest  
 4.	Number of subtrees = number of elements in parent + 1  
 5.	Every leaf has the same depth  
