@@ -11,7 +11,7 @@ Add a new node: ascend the middle node to its parent when reach maximum limit of
 Remove from a B-Tree: replace with the smallest node from its right subtree or the largest node from its left subtree. Merge siblings and rotate if necessary, making sure each node has minimum number of elements  
 
 Number of values contained: maximum * (1 - (maximum + 1) ^ (height + 1)) / 1 - (maximum + 1)
-Example: a B tree with minimum of 10, height of 2 can store 9260 values  
+Example: a B tree with minimum of 10, height of two can store 9260 values  
 
 
 # B+ Tree
