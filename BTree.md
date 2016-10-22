@@ -21,6 +21,8 @@ When split an internal node or root, we __move__ the middle key up:
 ![image](https://cloud.githubusercontent.com/assets/14355257/19502057/350156aa-9578-11e6-8679-3492f8b3e804.png)  
 Because there’s no need to redundantly store the association for internal nodes.  
 
+Adding is the same as B tree except for the leaf node, where you need to leave a copy behind.
+
 Removing from a B+ tree:  
 ![image](https://cloud.githubusercontent.com/assets/14355257/19502064/384746ee-9578-11e6-857a-d1272e9e35aa.png)
 -> remove 70 ->
