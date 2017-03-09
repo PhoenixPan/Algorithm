@@ -15,30 +15,38 @@ Fixed length with elements of the same type
 2. All operations are O(1) except search/insert kth/remove tail (slow as it has to keep the tail pointer correct)/remove kth, which are O(N).
 
 ### Doubly linked List
-Each vertex contains two links that refer to the previous and the next vertex.
-
-All operations are O(1) except search/insert kth/remove kth, which are O(N). Notice that the remove tail operation is now O(1) in Doubly Linked List.
+1. Each vertex contains two links that refer to the previous and the next vertex.
+2. All operations are O(1) except search/insert kth/remove kth, which are O(N). Notice that the remove tail operation is now O(1) in Doubly Linked List.
 
 #### Circular Linked List
 
 ## Stack
-1. Abstract Data Type(ADT): a stack can be implemented by means of Array, Structure, Pointer, and Linked List.  
+1. Stack is an Abstract Data Type(ADT): a stack can be implemented by means of Array, Structure, Pointer, and Linked List.  
 2. Last-In-First-Out (LIFO)
 3. push() pop() peek() isEmpty() isFull(): All operations are O(1)  
 
-## Queue
-Queue is basically a protected Single Linked List where we can only search the head item (peek), insert new item to the tail (enqueue), and remove existing item from the head (dequeue).
+https://www.tutorialspoint.com/data_structures_algorithms/expression_parsing.htm
 
-First-In-First-Out (FIFO)
-All operations are still O(1) as we do not use the slow O(N) remove tail operation.
+## Queue
+1. Queue is an Abstract Data Type(ADT): a queue can be implemented by means of Array, Structure, Pointer, and Linked List.   
+2. First-In-First-Out (FIFO)
+3. enqueue() dequeue() peek() isEmpty() isFull(): All operations are still O(1) as we do not use the slow O(N) remove tail operation.
+4. Two pointers: head and tail
+5. Queue is basically a protected Single Linked List where we can only search for(peek) and remove from(dequeue) the head item and insert new item to the tail (enqueue)  
 
 ### Double-ended Queue (Deque)
-Generalizes a queue, add or remove from either head or tail. Simply a protected Doubly-linked List.
-All operations are O(1).
-
+1. Add or remove from either head or tail. Basically a protected Doubly-linked List.
+2. All operations are O(1).
 
 ##### Question 1: What are the computational complexity of these structures?
 ##### Question 2: In which of these structures, edges are directed? Which are not?
+
+
+
+
+
+
+
 
 ## Java Implementation
 Linkedlist class
