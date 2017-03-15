@@ -5,7 +5,7 @@
 ## Binary Search (BST)
 1. O(log n)
 
-### Interpolation Search
+### Interpolation Search (weighted BST)
 1. O(log (log n))
 2. mid = Lo + ((Hi - Lo) * (A[x] - A[Lo]) / (A[Hi] - A[Lo])  
   * Lo   = Lowest index of the list  
