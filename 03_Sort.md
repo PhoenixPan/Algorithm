@@ -5,12 +5,16 @@
 4. 
 
 ## Bubble sort
-Worst case: O(n^2)
-Swap the elements if A[n] > A[n+1], moving the largesting element in the unsorted part to the end during each iteration.
+Worst case: O(n^2)  
+Swap the elements if A[n] > A[n+1], moving the largesting element in the unsorted part to the end during each iteration.  
 
 ```
 public static int[] bubbleSort(int[] list) {
-  for (int j = list.length - 1; j > 0; j--) {
+  int len = list.length;
+  if (len == 1) 
+    return list;
+
+  for (int j = len - 1; j > 0; j--) {
     for (int i = 0; i < j; i++) {
       if (list[i] > list[i + 1]) {
         int temp = list[i];
@@ -22,7 +26,29 @@ public static int[] bubbleSort(int[] list) {
 }
 ```
 
-##
-##
+## Insertion sort
+Worst case: O(n^2)  
+
+```
+public static int[] insertionSort(int[] list) {
+  int len = list.length;
+  if (len == 1) 
+    return list;
+
+  for (int i = 0;i < len - 1; i++) {
+    while (i >= 0 && list[i] > list[i + 1]) {
+        int temp = list[i];
+        list[i] = list[i + 1];
+        list[i + 1] = temp;
+        i--;
+    }
+  }
+  return list;
+}
+```
+
+## Selection sort
+
+
 ##
 ##
