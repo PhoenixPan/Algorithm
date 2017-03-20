@@ -19,4 +19,10 @@ public static void naiveMatch(String needle, String haystack) {
 }
 ```
 
-### Rabin-Karp Algorithm (RK): 
+### Rabin-Karp Algorithm (RK)
+
+Using hashtable. Easy to implement and improved speed. However, a good hash function is required for this method to work. It could also consumes a lot of memory.
+
+### Knuth-Morris-Pratt (KMP) Matcher
+
+
