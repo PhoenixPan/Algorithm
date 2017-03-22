@@ -69,4 +69,6 @@ Using hashtable. Easy to implement and improved speed. However, a good hash func
 
 
 
-References: http://algs4.cs.princeton.edu/lectures/53SubstringSearch.pdf
+### References
+http://algs4.cs.princeton.edu/lectures/53SubstringSearch.pdf  
+http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/  
