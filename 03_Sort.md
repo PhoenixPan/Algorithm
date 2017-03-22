@@ -4,8 +4,13 @@
 3. adaptive or non-adaptive: whether the sorting will take advantage of the already sorted elements
 
 ## Bubble sort
-Worst case: O(n^2)  
-Moving the largesting element in the unsorted part to the end in each iteration through constant swaps. The right, ordered side doesn't change anymore.  
+Moving the largesting element in the unsorted part to the end in each iteration through constant swaps. The sorted parted doesn't change once positioned.  
+
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Time Complexity    | O(n^2)           |  
+| Space Complexity   | O(n)             |
+| Stable             |                  |
 
 ```
 public static int[] bubbleSort(int[] list) {
@@ -26,8 +31,13 @@ public static int[] bubbleSort(int[] list) {
 ```
 
 ## Insertion sort
-Worst case: O(n^2)  
 Swap each element to as left as it can be. New element could still insert into the ordered part.  
+
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Time Complexity    | O(n^2)           |  
+| Space Complexity   | O(n)             |
+| Stable             |                  |
 
 ```
 public static int[] insertionSort(int[] list) {
@@ -48,8 +58,13 @@ public static int[] insertionSort(int[] list) {
 ```
 
 ## Selection sort
-Worst case: O(n^2)  
 Select the smallest element and move it to the leftmost by swapping it with the current leftmost element.  
+
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Time Complexity    | O(n^2)           |  
+| Space Complexity   | O(n)             |
+| Stable             |                  |
 
 ```
 public static int[] insertionSort(int[] list) {
