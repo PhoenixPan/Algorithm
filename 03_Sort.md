@@ -1,16 +1,18 @@
 # Sort
 1. in-place and not-in-place: whether the sorting will use additional spaces
-2. stable or unstable: whether the sorting will change the order of elements that have the same value: 8A 8B -> 8A 8B or 8B 8A?
+2. stable or unstable: whether the sorting will change the original order of elements that have the same value: 8A 8B -> 8A 8B or 8B 8A?
 3. adaptive or non-adaptive: whether the sorting will take advantage of the already sorted elements
 
-## Bubble sort
-Moving the largesting element in the unsorted part to the end in each iteration through constant swaps. The sorted parted doesn't change once positioned.  
+## Bubble Sort
+Repeatedly compare neighbor pairs and swap if necessary.  
+In each iteration, check all pairs for whether they need to be swapped. After each swap, the largest element (bubble) in the unsorted part should be moved to the right side. The sorted parted doesn't change once positioned.
 
 | Features           | Value            |
 | ------------------ | ---------------- |
-| Time Complexity    | O(n^2)           |  
+| Best Time          | O(n)             |  
+| Worst Time         | O(n^2)           |  
 | Space Complexity   | O(n)             |
-| Stable             |                  |
+| Stable             | Stable           |
 
 ```
 public static int[] bubbleSort(int[] list) {
@@ -30,14 +32,15 @@ public static int[] bubbleSort(int[] list) {
 }
 ```
 
-## Insertion sort
-Swap each element to as left as it can be. New element could still insert into the ordered part.  
+## Insertion Sort
+Repeatedly add new element to the sorted result (by swaping each element to as left as it can be). The sorted parted still change as new elements come in.  
 
 | Features           | Value            |
 | ------------------ | ---------------- |
-| Time Complexity    | O(n^2)           |  
+| Best Time          | O(n)             |  
+| Worst Time         | O(n^2)           |  
 | Space Complexity   | O(n)             |
-| Stable             |                  |
+| Stable             | Stable           |
 
 ```
 public static int[] insertionSort(int[] list) {
@@ -45,7 +48,7 @@ public static int[] insertionSort(int[] list) {
   if (len == 1) 
     return list;
 
-  for (int i = 0;i < len - 1; i++) {
+  for (int i = 0; i < len - 1; i++) {
     while (i >= 0 && list[i] > list[i + 1]) {
         int temp = list[i];
         list[i] = list[i + 1];
@@ -57,36 +60,34 @@ public static int[] insertionSort(int[] list) {
 }
 ```
 
-## Selection sort
-Select the smallest element and move it to the leftmost by swapping it with the current leftmost element.  
+## Selection Sort
+Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position). The sorted parted doesn't change once positioned.    
 
 | Features           | Value            |
 | ------------------ | ---------------- |
-| Time Complexity    | O(n^2)           |  
-| Space Complexity   | O(n)             |
-| Stable             |                  |
+| Best Time          | O(n)             |  
+| Worst Time         | O(n^2)           |  
+| Space Complexity   | O(n^2)           |
+| Stable             | Unstable         |
 
 ```
-public static int[] insertionSort(int[] list) {
+public static int[] selectionSort(int[] list) {
   int len = list.length;
   if (len == 1) 
     return list;
 
-  for (int i = 0;i < len - 1; i++) { // We don't need to check the last element, it will be the largest
-    int min = list[i];
-    int minIndex = i;
-    for (int j = i;j < len; j++) {
-      if (min > list[j]) {
-        min = list[j];
-        minIndex = j;
+  for (int i = 0; i < len - 1; i++) { // We don't need to check the last element, it will be the largest
+    for (int j = i; j < len; j++) {
+      if (list[i] > list[j]) {
+        int temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
       }
     }
-    int temp = list[minIndex];
-    list[minIndex] = list[i];
-    list[i] = temp;
   }
   return list;
 }
 ```
-##
-##
+
+## Merge Sort
+## Quick Sort
