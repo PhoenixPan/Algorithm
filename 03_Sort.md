@@ -5,7 +5,8 @@
 
 ## Bubble Sort
 Repeatedly compare neighbor pairs and swap if necessary.  
-In each iteration, check all pairs for whether they need to be swapped. After each swap, the largest element (bubble) in the unsorted part should be moved to the right side. The sorted parted doesn't change once positioned.
+In each iteration, check all pairs for whether they need to be swapped. After each swap, the largest element (bubble) in the unsorted part should be moved to the right side.  
+The sorted parted doesn't change once positioned.  
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -33,7 +34,9 @@ public static int[] bubbleSort(int[] list) {
 ```
 
 ## Insertion Sort
-Repeatedly add new element to the sorted result (by swaping each element to as left as it can be). The sorted parted still change as new elements come in.  
+Repeatedly add new element to the sorted result.   
+Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
+The sorted parted still change as new elements come in.  
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -61,7 +64,7 @@ public static int[] insertionSort(int[] list) {
 ```
 
 ## Selection Sort
-Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position). The sorted parted doesn't change once positioned.    
+Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position).   The sorted parted doesn't change once positioned.    
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -91,3 +94,6 @@ public static int[] selectionSort(int[] list) {
 
 ## Merge Sort
 ## Quick Sort
+
+### References
+http://theoryapp.com/selection-insertion-and-bubble-sort/
