@@ -19,7 +19,7 @@
 ```
 public static int[] bubbleSort(int[] list) {
   int len = list.length;
-  if (len == 1) 
+  if (len <= 1) 
     return list;
 
   for (int j = len - 1; j > 0; j--) {
@@ -50,7 +50,7 @@ public static int[] bubbleSort(int[] list) {
 ```
 public static int[] insertionSort(int[] list) {
   int len = list.length;
-  if (len == 1) 
+  if (len <= 1) 
     return list;
 
   for (int i = 0; i < len - 1; i++) {
@@ -79,7 +79,7 @@ public static int[] insertionSort(int[] list) {
 ```
 public static int[] selectionSort(int[] list) {
   int len = list.length;
-  if (len == 1) 
+  if (len <= 1) 
     return list;
 
   for (int i = 0; i < len - 1; i++) { // We don't need to check the last element, it will be the largest
@@ -96,7 +96,7 @@ public static int[] selectionSort(int[] list) {
 ```
 
 ## Merge Sort
-1. 
+1. Divide, conquer, combine: Dividethe array into one-element-long sub-array, conquer (sort) each sub-array pair, and recursively combine (merge) them together. 
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -106,6 +106,69 @@ public static int[] selectionSort(int[] list) {
 | Stable             | Stable           |
 | In place?          | No               |
 
+```
+// I used all primitive operations rather than Java functions to show all the processes
+public static int[] mergeSort(int[] list) {
+  int len = list.length;
+  if (len <= 1) 
+    return list;
+  
+  // Divide: Split the array into two, could use System.arraycopy here.
+  // To copy an array, System.arraycopy performs well for large array and primitive loop method is good for small array.  
+  int[] sub1 = new int[len/2];  
+  int[] sub2 = new int[len - len/2];  
+  int index1 = 0;
+  int index2 = 0;
+  for (int i = 0; i < len; i++) {
+    if (i < len/2) {
+      sub1[index1] = list[i];
+      index1++;
+    }
+    else {
+      sub2[index2] = list[i];
+      index2++;
+    }
+  }
+  
+  // Conquer
+  sub1 = mergeSort(sub1);
+  sub2 = mergeSort(sub2);
+  
+  // Combine
+  return merge(sub1, sub2);
+}
+
+public static int[] merge(int[] sub1, int[] sub2) {
+  int len1 = sub1.length;
+  int len2 = sub2.length;
+  int index1 = 0;
+  int index2 = 0;
+  int[] result = new int[len1 + len2];
+  
+  for (int i = 0; i < len1 + len2; i++) {
+    if (index1 < len1 && index2 < len2) { // Could use Math.min() here.
+      if (sub1[index1] <= sub2[index2]) {
+         result[i] = sub1[index1];
+         index1++;
+      }
+      else {
+         result[i] = sub2[index2];
+         index2++;
+      }                              
+    }
+    else if (index1 < len1) {
+        result[i] = sub1[index1];
+        index1++;
+    }
+    else if (index2 < len2) {
+        result[i] = sub2[index2];
+        index2++;
+    }
+  }
+  
+  return result;
+}
+```
 
 ## Quick Sort
 Usually outperform merge sort.  
