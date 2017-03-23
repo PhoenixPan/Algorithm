@@ -4,9 +4,9 @@
 3. adaptive or non-adaptive: whether the sorting will take advantage of the already sorted elements
 
 ## Bubble Sort
-Repeatedly compare neighbor pairs and swap if necessary.  
-In each iteration, check all pairs for whether they need to be swapped. After each swap, the largest element (bubble) in the unsorted part should be moved to the right side.  
-The sorted parted doesn't change once positioned.  
+1. Repeatedly compare neighbor pairs and swap if necessary.  
+2. In each iteration, check all pairs for whether they need to be swapped. After each swap, the largest element (bubble) in the unsorted part should be moved to the right side.  
+3. The sorted parted doesn't change once positioned.  
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -14,6 +14,7 @@ The sorted parted doesn't change once positioned.
 | Worst Time         | O(n^2)           |  
 | Space Complexity   | O(n)             |
 | Stable             | Stable           |
+| In place?          | Yes              |
 
 ```
 public static int[] bubbleSort(int[] list) {
@@ -34,9 +35,9 @@ public static int[] bubbleSort(int[] list) {
 ```
 
 ## Insertion Sort
-Repeatedly add new element to the sorted result.   
-Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
-The sorted parted still change as new elements come in.  
+1. Repeatedly add new element to the sorted result.   
+2. Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
+3. The sorted parted still change as new elements come in.  
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -44,6 +45,7 @@ The sorted parted still change as new elements come in.
 | Worst Time         | O(n^2)           |  
 | Space Complexity   | O(n)             |
 | Stable             | Stable           |
+| In place?          | Yes              |
 
 ```
 public static int[] insertionSort(int[] list) {
@@ -64,7 +66,7 @@ public static int[] insertionSort(int[] list) {
 ```
 
 ## Selection Sort
-Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position).   The sorted parted doesn't change once positioned.    
+1. Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position).  2. The sorted parted doesn't change once positioned.    
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -72,6 +74,7 @@ Repeatedly select the smallest element in the list and append it to the result (
 | Worst Time         | O(n^2)           |  
 | Space Complexity   | O(n^2)           |
 | Stable             | Unstable         |
+| In place?          | Yes              |
 
 ```
 public static int[] selectionSort(int[] list) {
@@ -93,7 +96,21 @@ public static int[] selectionSort(int[] list) {
 ```
 
 ## Merge Sort
+1. 
+
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Best Time          | O(nlogn)         |  
+| Worst Time         | O(nlogn)         |  
+| Space Complexity   | O(n^2)           |
+| Stable             | Stable           |
+| In place?          | No               |
+
+
 ## Quick Sort
+Usually outperform merge sort.  
+
 
 ### References
+http://www.titrias.com/ultimate-sorting-algorithms-comparison/
 http://theoryapp.com/selection-insertion-and-bubble-sort/
