@@ -72,7 +72,7 @@ public static int[] insertionSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(n)             |  
 | Worst Time         | O(n^2)           |  
-| Space Complexity   | O(n^2)           |
+| Space Complexity   | O(n)             |
 | Stable             | Unstable         |
 | In place?          | Yes              |
 
@@ -102,7 +102,7 @@ public static int[] selectionSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(nlogn)         |  
 | Worst Time         | O(nlogn)         |  
-| Space Complexity   | O(n^2)           |
+| Space Complexity   | O(n)             |
 | Stable             | Stable           |
 | In place?          | No               |
 
@@ -171,8 +171,26 @@ public static int[] merge(int[] sub1, int[] sub2) {
 ```
 
 ## Quick Sort
-Usually outperform merge sort.  
+1. One of the fastest sorting algorithm, usually outperform merge sort.  
 
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Best Time          | O(nlogn)         |  
+| Worst Time         | O(n^2)           |  
+| Space Complexity   | O(n)             |
+| Stable             | Unstable         |
+| In place?          | No               |
+
+```
+public static int[] quickSort(int[] list) {
+  int len = list.length;
+  if (len <= 1) 
+    return list;
+   
+  int pivot = list[len-1];
+    
+}
+```
 
 ### References
 http://www.titrias.com/ultimate-sorting-algorithms-comparison/
