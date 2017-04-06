@@ -22,15 +22,16 @@ public static int[] bubbleSort(int[] list) {
   if (len <= 1) 
     return list;
 
-  for (int j = len - 1; j > 0; j--) {
-    for (int i = 0; i < j; i++) { // The right side of the list is ordered and have no need to check
-      if (list[i] > list[i + 1]) {
-        int temp = list[i];
-        list[i] = list[i + 1];
-        list[i + 1] = temp;
+  for (int i = 0; i < len - 1; i++) {
+     // The right side of the list is ordered and have no need to check
+    for (int j = 0; j < len - i - 1; j++) { 
+      if (list[j] > list[j + 1]) {
+        int temp = list[j];
+        list[j] = list[j + 1];
+        list[j + 1] = temp;
       }
     }
-  }
+  }  
 }
 ```
 
