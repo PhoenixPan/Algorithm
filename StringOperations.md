@@ -1,5 +1,5 @@
-## String Match
-Find pattern of length M in a text of length N, usually N>>M.  
+# String Match
+Find pattern of length n in a text of length N, usually N>>M.  
 1. Naive method (brute force)
 2. Boyer-Moore method
 3. Knuth-Morris-Pratt (KMP) method
@@ -7,20 +7,20 @@ Find pattern of length M in a text of length N, usually N>>M.
 
 ### Naive Method
 For every position in the string, consider it a starting position of the pattern and see if we get a match.  
-In natural language processing, the naive method gives decent performance, since breakpoint is usually quick to identify. For the same reason, this method is not good for long needle.  
+In natural language processing, the naive method gives decent performance, since breakpoint is usually quick to identify. For the same reason, this method is not good for long pattern.  
 
 Efficiency:
 Worst case: O(nm)  
-With very short needles, naive method may outperform other methods.
+With very short patterns, naive method may outperform other methods.
 
 ```
-public static void naiveMatcher(String needle, String haystack) {
-  int m = needle.length();
-  int n = haystack.length();
+public static void naiveSearch(String pattern, String text) {
+  int m = text.length();
+  int n = pattern.length();
   int count = 0;
-  for (int i = 0; i < n - m ; i++) {
+  for (int i = 0; i < m - n ; i++) {
     for (int j = 0; j < n; j++) {
-      if (needle.charAt(j) != haystack.charAt(i + j))
+      if (pattern.charAt(j) != text.charAt(i + j))
         break;
       if (j == m) 
         count++; // orprint out this match
@@ -35,15 +35,15 @@ public static void naiveMatcher(String needle, String haystack) {
 Worst case: O(nm)  
 
 ```
-public static int search(String needle, String haystack) {
-  int m = needle.length();
-  int n = haystack.length();
+public static int BMSearch(String pattern, String text) {
+  int m = text.length();
+  int n = pattern.length();
   int skip;
-  for (int i = 0; i <= n - m; i += skip) {
+  for (int i = 0; i <= m - m; i += skip) {
     skip = 0;
-    for (int j = m - 1; j >= 0; j--) {
-      if (needle.charAt(j) != haystack.charAt(i+j)) {
-        skip = Math.max(1, j - haystack.charAt(i+j));
+    for (int j = n - 1; j >= 0; j--) {
+      if (pattern.charAt(j) != text.charAt(i+j)) {
+        skip = Math.max(1, j - text.charAt(i+j));
         break;
       }
     }
@@ -54,13 +54,48 @@ public static int search(String needle, String haystack) {
 } 
 ```
 
-### Knuth-Morris-Pratt (KMP) Matcher  
-Avoid backup in naive method.  
+### Knuth-Morris-Pratt (KMP) Matcher
+Start from the point where mismatch occurs. 
+If the checked part contains no pattern headings, then start from the next index in the text:  t[n + 1], p[0]  
+Otherwise, start from the mismatch position in text and also a later position in the pattern: t[n + 1], p[2]
+Avoid backup in naive method. 
 
 ```
-public static void naiveMatcher(String needle, String haystack) {
-  int m = 0;
-  int i = 0;
+public class KMPSearch {
+  public static void main(String[] args) {
+  	System.out.println(KMPMatcher("abcde", "bcfabcdabcde"));
+  }
+
+  public static String KMPMatcher(String pattern, String text) {
+    int m = text.length();
+    int n = pattern.length();
+    int i = 0;
+    int j = 0;
+    
+    while (i < m) {
+      if (text.charAt(i) == pattern.charAt(j)) {
+        i++;
+        j++;
+      }
+      else {
+      	String matchPart = text.substring(i - j, i);
+      	int matchLen = matchPart.length();
+	if(matchLen > 0 && matchPart.substring(1, matchLen).indexOf(pattern.charAt(0)) > -1) {
+	  System.out.println(matchPart);
+	  i = i - j;
+	  j = 0;
+	}
+	else {
+      	  i++;
+      	  j = 0;
+      	}
+      }
+      if (j == n) {
+        return text.substring(i - j, i);
+      } 
+    }
+    return "None"; 
+  }
 }
 ```
 
@@ -72,3 +107,7 @@ Using hashtable. Easy to implement and improved speed. However, a good hash func
 ### References
 http://algs4.cs.princeton.edu/lectures/53SubstringSearch.pdf  
 http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/  
+
+# Longest Common Subsequence
+
+
