@@ -6,6 +6,9 @@ Find pattern of length n in a text of length N, usually N>>M.
 4. Rabin-Karp method
 
 ### Naive Method
+
+Worst case: O(nm)  
+
 For every position in the string, consider it a starting position of the pattern and see if we get a match.  
 In natural language processing, the naive method gives decent performance, since breakpoint is usually quick to identify. For the same reason, this method is not good for long pattern.  
 
@@ -55,6 +58,9 @@ public static int BMSearch(String pattern, String text) {
 ```
 
 ### Knuth-Morris-Pratt (KMP) Matcher
+
+Worst case: O(n + m)  
+
 Start from the point where mismatch occurs. 
 If the checked part contains no pattern headings, then start from the next index in the text:  t[n + 1], p[0]  
 Otherwise, start from the mismatch position in text and also a later position in the pattern: t[n + 1], p[2]
