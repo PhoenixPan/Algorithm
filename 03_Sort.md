@@ -12,7 +12,7 @@
 | ------------------ | ---------------- |
 | Best Time          | O(n)             |  
 | Worst Time         | O(n^2)           |  
-| Space Complexity   | O(n)             |
+| Space Complexity   | O(1)             |
 | Stable             | Stable           |
 | In place?          | Yes              |
 
@@ -44,7 +44,7 @@ public static int[] bubbleSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(n)             |  
 | Worst Time         | O(n^2)           |  
-| Space Complexity   | O(n)             |
+| Space Complexity   | O(1)             |
 | Stable             | Stable           |
 | In place?          | Yes              |
 
@@ -73,7 +73,7 @@ public static int[] insertionSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(n)             |  
 | Worst Time         | O(n^2)           |  
-| Space Complexity   | O(n)             |
+| Space Complexity   | O(1)             |
 | Stable             | Unstable         |
 | In place?          | Yes              |
 
@@ -103,7 +103,7 @@ public static int[] selectionSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(nlogn)         |  
 | Worst Time         | O(nlogn)         |  
-| Space Complexity   | O(n)             |
+| Space Complexity   | Depends          |
 | Stable             | Stable           |
 | In place?          | No               |
 
@@ -178,7 +178,7 @@ public static int[] merge(int[] sub1, int[] sub2) {
 | ------------------ | ---------------- |
 | Best Time          | O(nlogn)         |  
 | Worst Time         | O(n^2)           |  
-| Space Complexity   | O(n)             |
+| Space Complexity   | O(1)             |
 | Stable             | Unstable         |
 | In place?          | No               |
 
