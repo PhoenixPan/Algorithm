@@ -183,13 +183,36 @@ public static int[] merge(int[] sub1, int[] sub2) {
 | In place?          | No               |
 
 ```
-public static int[] quickSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-   
-  int pivot = list[len-1];
-    
+public static void main(String[] args) {
+  int[] list = {6, 3, 4, 7, 1, 5};
+  quickSort(list, 0, list.length - 1);
+  System.out.println(Arrays.toString(list));
+}
+
+public static void quickSort(int[] list, int start, int end) {
+  if (start < end) {
+    int pivotIndex = partition(list, start, end);
+    quickSort(list, start, pivotIndex - 1);
+    quickSort(list, pivotIndex + 1, end);
+  }
+}
+
+public static int partition(int[] list, int start, int end) {
+  int pivot = list[end];
+  int pointer = 0;
+  for (int i = 0; i < end; i++) {
+    if (list[i] < pivot) {
+      int temp = list[pointer];
+      list[pointer] = list[i];
+      list[i] = temp;
+      pointer++;
+    }
+  }
+  int temp = list[pointer];
+  list[pointer] = pivot;
+  list[end] = temp;
+
+  return pointer;
 }
 ```
 
