@@ -19,8 +19,10 @@ s[n] = global solution
 M[1], can't be cut
 
 ### 2. Induction rule
-#### Method 1
-M[2] = max(1, M[1]) * max(1, M[1])  --|--  
+#### Method 1: DP on both sides 左大段 右大段
+We only consider one cut position(i) at a time, then we should find the largest products on both left (M[i]) and right sides (M[n-i]), which are gained dynamically from previous calculations. We will always find M[i], since i < n.   
+
+M[2] = max(1, M[1]) * max(1, M[1])  --|--  
 
 M[3] = max(1, M[1]) * max(2, M[2])  --|-- --  
 M[3] = max(2, M[2]) * max(1, M[1])  -- --|--  
@@ -29,13 +31,6 @@ M[4] = max(1, M[1]) * max(3, M[3])  --|-- -- --
 M[4] = max(2, M[2]) * max(2, M[2])  -- --|-- --  
 M[4] = max(3, M[3]) * max(1, M[1])  -- -- --|--  
 
-We only consider one cut, other cuts will be performed in max(n, M[n]).  
-
-#### Method 2
-
-### 3. English expression of the meaning (skipped)
-### 4. Code
-#### Method 1
 Time: O(n^2)  
 Space: O(n)  
 ```java
@@ -58,6 +53,13 @@ int cutRope(int n) {
     return max;
   }
 ```
+
+#### Method 2：DP only on one side 左大段 右小段
+
+
+
+### 3. English expression of the meaning (skipped)
+
 
 ### Optimization
 1-9 and 9-1 are the same
