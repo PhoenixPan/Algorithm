@@ -21,6 +21,7 @@ M[1], can't be cut
 ### 2. Induction rule
 #### Method 1: DP on both sides 左大段 右大段
 We only consider one cut position(i) at a time, then we should find the largest products on both left (M[i]) and right sides (M[n-i]), which are gained dynamically from previous calculations. We will always find M[i], since i < n.   
+M[1] = 1  
 
 M[2] = max(1, M[1]) * max(1, M[1])  --|--  
 
@@ -34,35 +35,50 @@ M[4] = max(3, M[3]) * max(1, M[1])  -- -- --|--
 Time: O(n^2)  
 Space: O(n)  
 ```java
-int cutRope(int n) {
-    if(n < 2) return -1; // n has to be at least 2, as one cut has to be made
+    int cutRope1(int n) {
+    if(n < 2) return 1; // n has to be at least 2, as one cut has to be made
+    int[] dp = new int[n + 1];
 
-    int max = 1;
-    int[] record = new int[n];
+    for(int i = 1; i <= n; i++)
+      for (int j = 1; j < i; j++)
+        dp[i] = Math.max(Math.max(j, dp[j]) * Math.max(i-j, dp[i-j]), dp[i]);
 
-    for(int i = 1; i < n; i++) {
-      int temp = i;
-      for (int j = 1; j < i; j++) {
-        temp = Math.max(
-            Math.max(j, record[j]) * Math.max(i - j, record[i-j])
-            , temp);
-      }
-      record[i] = temp;
-      max = Math.max(max, temp);
-    }
-    return max;
-  }
+    return dp[n];
+}
 ```
 
 #### Method 2：DP only on one side 左大段 右小段
+Enumerate concrete numbers on the right side.  
+More general application.  
 
+M[1] = 1  
 
+M[2] = max(1, M[1]) * 1    (right side can only be 1)  
+
+M[3] = max(2, M[2]) * 1    (right side can be 1 or 2)  
+M[3] = max(1, M[1]) * 2  
+
+M[4] = max(3, M[3]) * 1    (right side can be 1 or 2 or 3)   
+M[4] = max(2, M[2]) * 2  
+M[4] = max(1, M[1]) * 3  
+
+Time: O(n^2)  
+Space: O(n)  
+```java
+int cutRope2(int n) {
+    if(n < 2) return 1; // n has to be at least 2, as one cut has to be made
+    int[] dp = new int[n + 1];
+    dp[1] = 1;
+
+    for(int i = 2; i <= n; i++)
+      for(int j = 1; j < i; j++)
+        dp[i] = Math.max(j * Math.max(i-j, dp[i-j]), dp[i]);
+        
+    return dp[n];
+}
+```
 
 ### 3. English expression of the meaning (skipped)
-
-
-### Optimization
-1-9 and 9-1 are the same
 
 ## Key words
 Iteration and recursion, sub-array and sub-sequence
