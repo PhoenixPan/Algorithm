@@ -1,5 +1,5 @@
 ## Steps
-1. Base case
+1. Base case  
 When weight of each smallest element in the original data is identical or similar, we can usually use liner scan and look back to the previous result. 
 
 2. Induction rule f(n)
@@ -77,7 +77,7 @@ int cutRope2(int n) {
     return dp[n];
 }
 ```
-
+#### Method 3: Recursion (skipped)
 ### 3. English expression of the meaning (skipped)
 
 ## Key words
