@@ -4,12 +4,9 @@ Conditions:
 1. Sorted
 2. Random access (array, not linked list)
 
-在一个包含x的数组内，二分查找通过对范围的跟综来解决问题。开始时，范围就是整个数组。通过将范围中间的元素
-与x比较并丢弃一半范围，范围就被缩小。这个过程一直持续，直到在x被发现，或者那个能够包含t的范围已成为空。
+在一个包含x的数组内，二分查找通过对范围的跟综来解决问题。开始时，范围就是整个数组。通过将范围中间的元素与x比较并丢弃一半范围，范围就被缩小。这个过程一直持续，直到在x被发现，或者那个能够包含t的范围已成为空。
 
 Low and high (start and end): a closed interval which contains the result. It's important to move boundaries carefully, as it's where bugs find their ways.  
-
-
 
 ## Basic: Find a target in an array
 Answers: \[no, no, no, no, yes, no, no, no]  
@@ -74,5 +71,6 @@ It's more efficient way to get mid = low + ((high - low) >> 1)
 ```
 
 ## References
+http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=161799&highlight=binary%2Bsearch  
 https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/  
 https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/04.01.md  
