@@ -29,14 +29,17 @@ public int BinarySearch(int[] nums, int target) {
 ```
 
 ## Range control
-`mid` cannot sit outside of the range.  
-If `hi = A.length`, then `while(lo < hi)`, `hi = mid`  
-If `hi = A.length - 1`, then `whilw(lo <= hi)`, `hi = mid - 1`   
+1. `mid` cannot sit outside of the range.  
+  If `hi = A.length`, then `while(lo < hi)`, `hi = mid`  
+  If `hi = A.length - 1`, then `whilw(lo <= hi)`, `hi = mid - 1`   
+2.  根据right和left收缩时+1还是-1，决定mid如何计算。如果是left=mid, 那么计算mid时就取(left + right + 1)/2，否则取(left + right)/2（这是因为后者的mid是偏向左边的，当right-left=1时，left本身就是mid，如果此时用left=mid的话，搜索范围就不会变，无限循环);
+3. 退出条件必定是left<right或者left<=right中的一种。至于是哪种，取决于找到的元素是否一定是正确的元素。比如Search Insert Position这道题，当left=right时，找到的位置必然是可行的位置。这种情况下就不需要再检查了；而如果要看数组中究竟有没有某个元素，那最后缩到范围内只有一个数时，还是要再检查一下，这时就要加上=。
+4. 如果在循环内返回，那么总是返回mid，如果在循环外返回，永远返回left。循环外除特殊情况外不做判断。当做到1、2、3以后，4一般情况下会自动成立。
 
-### Q1: `while (lo <= hi)`
+### Highlight 1: `while (lo <= hi)`
 We need to check the point where lo == hi. For example: [1,2,3,4], 4 (target at boundary: 1 or 4).  
 
-### Q2: `lo = mid + 1` and `hi = mid - 1`
+### Highlight 2: `lo = mid + 1` and `hi = mid - 1`
 Make sure they will change to avoid infinite loop. When hi = lo + 1, mid will always be lo (0 + 1/2 -> 0). When we try to find the lower bound when lo = mid, we may get stuck there. . To resolve this, we can change the code to `mid = lo + (hi-lo+1) / 2`. 
 
 Remeber, always to set test case \[no, yes], such as \[1,2], 2.  
