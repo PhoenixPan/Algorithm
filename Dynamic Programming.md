@@ -1,4 +1,11 @@
 # Dynamic Programming
+
+##### One-dimension DP:  
+- [Example 1: Cutting rope](#example1)
+- [Example 2: Jump game](#example2)
+- [Example 3: Longest ascending subarray](#example3)
+- [Example 4: Dictionary problem](#example4)
+
 ## Strategies  
 1. Find the maximum or minimum in one-dimension data  
 
@@ -26,6 +33,7 @@ s[n] = global solution
 ## Key words
 base case, induction rule, iteration and recursion, sub-array and sub-sequence
 
+<a id="example1"></a>  
 ## Example 1: Cutting rope
 Give a rope with integer length n, how to cut the rope into m integer length parts with length p[0], p[1], ..., p[m-1] in order to get the maximal product of p[0] * p[1] * ... * p[m-1]? m is determined by you and must be greater than 0 (at least one cut must be made) 
 
@@ -95,6 +103,7 @@ int cutRope2(int n) {
 ```
 ### Method 3: Recursion (skipped)
 
+<a id="example2"></a>  
 ## Example 2: Jump game
 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index.
 
@@ -132,6 +141,7 @@ for (int j: 0< j < input[i])
   M[i] = Math.min(M[i], M[i+j] + 1)  // j <= input[i]
 ```
 
+<a id="example3"></a>  
 ## Example 3: Longest ascending subarray
 Given an unsorted array, find the subarray that has the greatest sum. Return the sum.  
 
@@ -183,6 +193,61 @@ for (1<= i < n) {
 return start, end;
 ```
 
+<a id="example4"></a>  
 ## Example 4: Dictionary problem
 Given a word, can it be composed by concatenating words from a given dictionary? 
+Dictionary: bob, car, rob  
+Example: bcobat(F), bobcatrob(T)  
 
+**1. Base case**: M[0] = false  
+**2. Induction rule**:  M[i] = OR (M[j] AND substring(j+1...i) is in dictionary), 0<= j < i  
+M[1] = false input[1] = b  
+One case only, false  
+
+M[2] = false input[2] = bo  
+Two cases  
+1. No cut, false  
+2. 左大段 b = M[1], 右小段 o: check dictionary. false  
+
+M[3] = true input[3] = bob  
+Three cases  
+1. No cut. true  
+2. 左大段 b = M[1], 右小段 ob: check dictionary. false  
+3. 左大段 bo = M[2], 右小段 b: check dictionary. false  
+
+M[4] = false input[4] = bobc  
+Four cases  
+1. No cut, false  
+2. 左大段 b = M[1], 右小段 obc: check dictionary. false  
+3. 左大段 bo = M[2], 右小段 bc: check dictionary. false  
+4. 左大段 bob = M[3], 右小段 c: check dictionary. false  
+
+左大段右大段行不通，因为右小段无历史记录，所以用左大段右小段。  
+
+Time: O(n^3), two for loop and s.substring()   
+Space: O(n)  
+```
+M[] = int[n+1];
+M[0] = false; 
+for(1<= 1 < n) {
+  if (dict.contains(s.substring(0, i))
+    M[i] = true;
+    continue;
+  
+  for(1<= j < i) {
+    if (M[j] && s.substring(j, i))
+      M[i] = true;
+      break;
+  }
+}
+return M[n-1];
+```
+### How to optimize time complexity? 
+Avoid using substring().  
+```
+```
+
+## Example 5: Edit Distance
+Given two strings of alphaumeric characters, determine the minimum number of Replace, Delete, and Insert operations needed to transform one string into the other.  
+
+Example: s1="asdf", s2="sghj"
