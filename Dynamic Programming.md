@@ -1,12 +1,18 @@
 # Dynamic Programming
 
+1. DP: Using basic elements to fill up the entire structure (bottom-up or top-down)  
+  Recursion: Does not record steps in the middle (top-down)
+2. Usually more efficient than recursion (such as in Fibonacci) which does not record anything
+3. Relieve the bottleneck of von Neumann architecture
+4. N-dimension DP: data can be stored in a N-dimension data structure (array, list, etc.)
+
 ##### One-dimension DP:  
 - [Example 1: Cutting rope](#example1)
 - [Example 2: Jump game](#example2)
 - [Example 3: Longest ascending subarray](#example3)
 - [Example 4: Dictionary problem](#example4)
 
-## Strategies  
+## Resolving strategies  
 1. Find the maximum or minimum in one-dimension data  
 
     1.1 When weight of each smallest element in the original data is identical(length, standard unit) or similar(letter, number), we can usually use **liner scan and look back** to the previous result. Examples:
