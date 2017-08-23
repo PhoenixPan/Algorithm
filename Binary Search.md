@@ -44,6 +44,21 @@ Make sure they will change to avoid infinite loop. When hi = lo + 1, mid will al
 
 Remeber, always to set test case \[no, yes], such as \[1,2], 2.  
 
+## Wildcard solution
+The range control is complicated isn't it? So we introduce a while card solution:
+```
+while (lo + 1 < hi) // hi - lo >= 2, so mid will always change
+if (mid = target)
+  return mid;
+else if (mid > target)
+  lo = mid;
+else if (mid < target)
+  hi = mid;
+  
+if (the value of lo and hi is ok)
+ return lo or hi;
+return -1;
+```
 
 ## Phase 2: Find the best answer among many candidates 
 Answers: \[no, no, no, no, yes, yes, yes, yes]
