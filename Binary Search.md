@@ -29,20 +29,22 @@ public int BinarySearch(int[] nums, int target) {
 ```
 
 ## Range control
-1. `mid` cannot sit outside of the range.  
+1. target has to sit in range [lo, hi]    
   If `hi = A.length`, then `while(lo < hi)`, `hi = mid`  
   If `hi = A.length - 1`, then `whilw(lo <= hi)`, `hi = mid - 1`   
-2.  根据right和left收缩时+1还是-1，决定mid如何计算。如果是left=mid, 那么计算mid时就取(left + right + 1)/2，否则取(left + right)/2（这是因为后者的mid是偏向左边的，当right-left=1时，left本身就是mid，如果此时用left=mid的话，搜索范围就不会变，无限循环);
-3. 退出条件必定是left<right或者left<=right中的一种。至于是哪种，取决于找到的元素是否一定是正确的元素。比如Search Insert Position这道题，当left=right时，找到的位置必然是可行的位置。这种情况下就不需要再检查了；而如果要看数组中究竟有没有某个元素，那最后缩到范围内只有一个数时，还是要再检查一下，这时就要加上=。
-4. 如果在循环内返回，那么总是返回mid，如果在循环外返回，永远返回left。循环外除特殊情况外不做判断。当做到1、2、3以后，4一般情况下会自动成立。
+2.  根据right和left收缩时+1还是-1，决定mid如何计算。如果是 lo=mid, 那么计算mid时就取(lo + hi + 1)/2，否则取(lo + hi)/2（这是因为后者的mid是偏向左边的，当 hi-lo=1时，lo 本身就是 mid，如果此时用 lo=mid 的话，搜索范围就不会变，无限循环)
+3. 退出条件为 `lo < hi` 还是 `lo <= hi` 取决于找到的元素是否一定是正确的元素。比如Search Insert Position这道题，当 lo=hi 时，找到的位置必然是可行的位置。这种情况下就不需要再检查了；而如果要看数组中究竟有没有某个元素，那最后缩到范围内只有一个数时 (hi-lo=1)，还是要再检查一下，这时就要加上"="
 
 ### Highlight 1: `while (lo <= hi)`
-We need to check the point where lo == hi. For example: [1,2,3,4], 4 (target at boundary: 1 or 4).  
+1. 在不该用=时用了=，会造成循环无法退出 For example: [1,2,3,4], 若target为1或4则会陷入死循环  
+2. 在该用=时不用=，会造成最后少判断一次，使得lo和hi可能无法移动到正确位置上
 
 ### Highlight 2: `lo = mid + 1` and `hi = mid - 1`
-Make sure they will change to avoid infinite loop. When hi = lo + 1, mid will always be lo (0 + 1/2 -> 0). When we try to find the lower bound when lo = mid, we may get stuck there. . To resolve this, we can change the code to `mid = lo + (hi-lo+1) / 2`. 
+Make sure they will change to avoid infinite loop. When hi - lo = 1, mid will always be lo (0 + 1/2 -> 0). When we try to find the lower bound when lo = mid, we may get stuck there. . To resolve this, we can change the code to `mid = lo + (hi-lo+1) / 2`. 
 
-Remeber, always to set test case \[no, yes], such as \[1,2], 2.  
+`while (lo <= hi)` plus `lo = mid + 1` and `hi = mid - 1` allows lo and hi to overlap.  
+
+Always to test cases \[no, yes], such as \[1,2], 2.  
 
 ## Wildcard solution
 The range control is complicated isn't it? So we introduce a while card solution:
@@ -90,6 +92,8 @@ It's more efficient way to get mid = low + ((high - low) >> 1)
 ```
 
 ## References
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=161799&highlight=binary%2Bsearch  
+http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=161799&highlight=binary%2Bsearch   
+http://www.1point3acres.com/bbs/thread-161799-2-1.html  
 https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/  
 https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/04.01.md  
+https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html  
