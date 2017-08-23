@@ -48,12 +48,12 @@ Remeber, always to set test case \[no, yes], such as \[1,2], 2.
 The range control is complicated isn't it? So we introduce a while card solution:
 ```
 while (lo + 1 < hi) // hi - lo >= 2, so mid will always change
-if (mid = target)
-  return mid;
-else if (mid > target)
-  lo = mid;         // no need to worry about +1 or not anymore
-else if (mid < target)
-  hi = mid;
+  if (mid = target)
+    return mid;
+  else if (mid > target)
+    lo = mid;         // no need to worry about +1 or not anymore
+  else if (mid < target)
+    hi = mid;
 
 // check the values of lo and hi at last
 if (lo == target or hi == target)
