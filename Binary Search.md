@@ -51,11 +51,12 @@ while (lo + 1 < hi) // hi - lo >= 2, so mid will always change
 if (mid = target)
   return mid;
 else if (mid > target)
-  lo = mid;
+  lo = mid;         // no need to worry about +1 or not anymore
 else if (mid < target)
   hi = mid;
-  
-if (the value of lo and hi is ok)
+
+// check the values of lo and hi at last
+if (lo == target or hi == target)
  return lo or hi;
 return -1;
 ```
