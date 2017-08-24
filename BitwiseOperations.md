@@ -46,6 +46,12 @@ overflow, no negative 0
 
 ![minimum](https://cloud.githubusercontent.com/assets/14355257/20159085/7c3d3382-a6ac-11e6-8db7-728e722cadf9.png)  
 
+### Unsigned integers
+1. Unsigned can hold a larger non-negative value (0 and positive).
+2. Unsigned uses the leading bit as a part of the value. 
+3. Signed integers can hold both positive and negative numbers.
+Check Leetcode question 191  
+
 ### Summary
 [+1] = [0000 0001]原码 = [0000 0001]反码 = [0000 0001]补码  
 [-1] = [1000 0001]原码 = [1111 1110]反码 = [1111 1111]补码  
