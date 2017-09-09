@@ -16,7 +16,7 @@
 | Stable             | Stable           |
 | In place?          | Yes              |
 
-```
+```java
 public static int[] bubbleSort(int[] list) {
   int len = list.length;
   if (len <= 1) 
@@ -35,39 +35,9 @@ public static int[] bubbleSort(int[] list) {
 }
 ```
 
-## Insertion Sort
-1. Repeatedly add new element to the sorted result.   
-2. Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
-3. The sorted parted still change as new elements come in.  
-
-| Features           | Value            |
-| ------------------ | ---------------- |
-| Best Time          | O(n)             |  
-| Worst Time         | O(n^2)           |  
-| Space Complexity   | O(1)             |
-| Stable             | Stable           |
-| In place?          | Yes              |
-
-```
-public static int[] insertionSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-
-  for (int i = 0; i < len - 1; i++) {
-    while (i >= 0 && list[i] > list[i + 1]) {
-        int temp = list[i];
-        list[i] = list[i + 1];
-        list[i + 1] = temp;
-        i--;
-    }
-  }
-  return list;
-}
-```
-
 ## Selection Sort
 1. Repeatedly select the smallest element in the list and append it to the result (by swapping it with the element in the nth position).  2. The sorted parted doesn't change once positioned.    
+3. Always need quadratic number of compares((n-1)+(n-2)+...+2+1=(1/2\*n^2)) but only meed liner number of swaps(n). 
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -77,7 +47,7 @@ public static int[] insertionSort(int[] list) {
 | Stable             | Unstable         |
 | In place?          | Yes              |
 
-```
+```java
 public static int[] selectionSort(int[] list) {
   int len = list.length;
   if (len <= 1) 
@@ -90,6 +60,36 @@ public static int[] selectionSort(int[] list) {
         list[i] = list[j];
         list[j] = temp;
       }
+    }
+  }
+  return list;
+}
+```
+## Insertion Sort
+1. Repeatedly add new element to the sorted result.   
+2. Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
+3. Could use a fewer number of compares(n) in best cases but more swaps in worst cases(1/2\*n^2), same as compares) 
+
+| Features           | Value            |
+| ------------------ | ---------------- |
+| Best Time          | O(n)             |  
+| Worst Time         | O(n^2)           |  
+| Space Complexity   | O(1)             |
+| Stable             | Stable           |
+| In place?          | Yes              |
+
+```java
+public static int[] insertionSort(int[] list) {
+  int len = list.length;
+  if (len <= 1) 
+    return list;
+
+  for (int i = 0; i < len - 1; i++) {
+    while (i >= 0 && list[i] > list[i + 1]) {
+        int temp = list[i];
+        list[i] = list[i + 1];
+        list[i + 1] = temp;
+        i--;
     }
   }
   return list;
