@@ -103,73 +103,58 @@ public static int[] insertionSort(int[] list) {
 | ------------------ | ---------------- |
 | Best Time          | O(nlogn)         |  
 | Worst Time         | O(nlogn)         |  
-| Space Complexity   | Depends          |
+| Space Complexity   | O(n)             |
 | Stable             | Stable           |
 | In place?          | No               |
 
-```
-// I used all primitive operations rather than Java functions to show all the processes
-public static int[] mergeSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-  
-  // Divide: Split the array into two, could use System.arraycopy here.
-  // To copy an array, System.arraycopy performs well for large array and primitive loop method is good for small array.  
-  int[] sub1 = new int[len/2];  
-  int[] sub2 = new int[len - len/2];  
-  int index1 = 0;
-  int index2 = 0;
-  for (int i = 0; i < len; i++) {
-    if (i < len/2) {
-      sub1[index1] = list[i];
-      index1++;
-    }
-    else {
-      sub2[index2] = list[i];
-      index2++;
-    }
-  }
-  
-  // Conquer
-  sub1 = mergeSort(sub1);
-  sub2 = mergeSort(sub2);
-  
-  // Combine
-  return merge(sub1, sub2);
-}
+```java
+public class MergeSort {
 
-public static int[] merge(int[] sub1, int[] sub2) {
-  int len1 = sub1.length;
-  int len2 = sub2.length;
-  int index1 = 0;
-  int index2 = 0;
-  int[] result = new int[len1 + len2];
-  
-  for (int i = 0; i < len1 + len2; i++) {
-    if (index1 < len1 && index2 < len2) { // Could use Math.min() here.
-      if (sub1[index1] <= sub2[index2]) {
-         result[i] = sub1[index1];
-         index1++;
-      }
-      else {
-         result[i] = sub2[index2];
-         index2++;
-      }                              
-    }
-    else if (index1 < len1) {
-        result[i] = sub1[index1];
-        index1++;
-    }
-    else if (index2 < len2) {
-        result[i] = sub2[index2];
-        index2++;
-    }
+  private static void sort(Comparable[] a) {
+    Comparable[] aux = new Comparable[a.length];
+    sort(a, aux, 0, a.length - 1);
   }
   
-  return result;
+  private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+    if (lo >= hi) {
+      return;
+    }
+    int mid = lo + (hi - lo) / 2;
+    sort(a, aux, lo, mid);
+    sort(a, aux, mid + 1, hi);
+    // optimization: already sorted
+    if (a[mid + 1].compareTo(a[mid]) > 0) {
+      return;
+    }
+    merge(a, aux, lo, mid, hi);
+  }
+  
+  private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    for (int k = lo; k <= hi; k++) {
+      aux[k] = a[k];
+    }
+    int i = lo; // start of the first half
+    int j = mid + 1; // start of the second half
+    for (int k = lo; k <= hi; k++) {
+      if (i > mid) { // if all elements in the first half are recorded
+        a[k] = aux[j++]; 
+      } else if (j > hi) { // if all elements in the second half are recorded
+        a[k] = aux[i++];
+      } else if (less(aux[j], aux[i]) {
+        a[k] = aux[j++];
+      } else {
+        a[k] = aux[i++];
+      }
+    }
+  }
 }
 ```
+
+![mergesort](https://user-images.githubusercontent.com/14355257/30248039-eb6bce38-9663-11e7-84af-d6a2c8fb79ca.png)
+Compare: 1 in each operation  
+Array access: 6 in each operation  
+Total: nlogn + 6nlogn = 7nlogn = O(nlogn)   
+
 
 ## Quick Sort
 1. One of the fastest sorting algorithm, usually outperform merge sort.  
