@@ -165,7 +165,11 @@ Total: nlogn + 6nlogn = 7nlogn = O(nlogn)
 | Worst Time         | O(n^2)           |  
 | Space Complexity   | O(1)             |
 | Stable             | Unstable         |
-| In place?          | No               |
+| In place?          | Yes              |
+
+## Comparing with merge sort
+Pro: No extra linear space needed; inplace; quick
+Con: Unstable; has worst condition depends on the data given
 
 ```
 public static void main(String[] args) {
