@@ -17,21 +17,15 @@
 | In place?          | Yes              |
 
 ```java
-public static int[] bubbleSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-
-  for (int i = 0; i < len - 1; i++) {
-     // The right side of the list is ordered and have no need to check
-    for (int j = 0; j < len - i - 1; j++) { 
-      if (list[j] > list[j + 1]) {
-        int temp = list[j];
-        list[j] = list[j + 1];
-        list[j + 1] = temp;
+public static int[] bubbleSort(int[] A) {
+  for (int i = 0; i < A.length - 1; i++) {
+    for (int j = 0; j < A.length - i - 1; j++) {  // The right side of the array is ordered and have no need to check
+      if (A[j] > A[j + 1]) {
+        swap(A[j], A[j + 1]);
       }
     }
   }  
+  return A;
 }
 ```
 
@@ -48,27 +42,21 @@ public static int[] bubbleSort(int[] list) {
 | In place?          | Yes              |
 
 ```java
-public static int[] selectionSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-
-  for (int i = 0; i < len - 1; i++) { // We don't need to check the last element, it will be the largest
-    for (int j = i; j < len; j++) {
-      if (list[i] > list[j]) {
-        int temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
+public static int[] selectionSort(int[] A) {
+  for (int i = 0; i < A.length - 1; i++) { // We don't need to check the last element, it will be the largest
+    for (int j = i; j < A.length; j++) {
+      if (A[i] > A[j]) {
+        swap(A[i], A[j]);
       }
     }
   }
-  return list;
+  return A;
 }
 ```
 ## Insertion Sort
 1. Repeatedly add new element to the sorted result.   
 2. Take the first element as sorted sub-array and add new element by swaping it to the proper, sorted position.  
-3. Could use a fewer number of compares(n) in best cases but more swaps in worst cases(1/2\*n^2), same as compares) 
+3. Could use a fewer number of compares(n) in best cases but more swaps in worst cases(1/2\*n^2).
 
 | Features           | Value            |
 | ------------------ | ---------------- |
@@ -79,20 +67,13 @@ public static int[] selectionSort(int[] list) {
 | In place?          | Yes              |
 
 ```java
-public static int[] insertionSort(int[] list) {
-  int len = list.length;
-  if (len <= 1) 
-    return list;
-
-  for (int i = 0; i < len - 1; i++) {
-    while (i >= 0 && list[i] > list[i + 1]) {
-        int temp = list[i];
-        list[i] = list[i + 1];
-        list[i + 1] = temp;
-        i--;
+public static int[] insertionSort(int[] A) {
+  for (int i = 1; i < A.length; i++) {
+    for (int j = i - 1; j >= 0 && A[j] > A[i]; j--) {
+        swap(A[j], A[j + 1]);
     }
   }
-  return list;
+  return A;
 }
 ```
 
