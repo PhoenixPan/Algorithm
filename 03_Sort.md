@@ -69,9 +69,13 @@ public static int[] selectionSort(int[] A) {
 ```java
 public static int[] insertionSort(int[] A) {
   for (int i = 1; i < A.length; i++) {
-    for (int j = i - 1; j >= 0 && A[j] > A[i]; j--) {
-        swap(A[j], A[j + 1]);
+    int j = i - 1;
+    int iNum = A[i];
+    while (j >= 0 && A[j] > iNum) {
+      A[j + 1] = A[j]; // move forward larger elements
+      j--;
     }
+    A[j + 1] = iNum; // insert value at i
   }
   return A;
 }
