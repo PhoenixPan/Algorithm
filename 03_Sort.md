@@ -69,13 +69,13 @@ public static int[] selectionSort(int[] A) {
 ```java
 public static int[] insertionSort(int[] A) {
   for (int i = 1; i < A.length; i++) {
+    int cur = A[i];
     int j = i - 1;
-    int iNum = A[i];
-    while (j >= 0 && A[j] > iNum) {
-      A[j + 1] = A[j]; // move forward larger elements
-      j--;
-    }
-    A[j + 1] = iNum; // insert value at i
+    while (j >= 0 && A[j] > cur) { 
+      A[j + 1] = A[j]; 
+      j = j - 1; 
+    } 
+    A[j + 1] = cur;
   }
   return A;
 }
