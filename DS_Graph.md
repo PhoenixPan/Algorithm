@@ -1,19 +1,12 @@
 # Graph basic
-#####Graphs:  
-undirected graphs  
-directed graphs   
-#####Graph Traversals:  
-depth-first (recursive vs. stack)  
-breadth-first (queue)  
-
 Simple Graphs: have no loops and no multiple edges
 
-
-Depth-first traversal (stack): visit next neighbor only after traversing all possible edges from the current neighbor and also its neighbors, until the end.  
+Depth-first traversal (stack or recursion): visit next neighbor only after traversing all possible edges from the current neighbor and also its neighbors, until the end.  
 Breadth-first traversal (queue): Visit all neighbors before visiting any of their neighbors (order does not matter).
 
-# Find the shortest path  
+## Find the shortest path  
 The shortest (minimal) path has the lowest cost, not the fewest edges. There could be more than one shortest path.
+
 ## Greedy Algorithms: Dijkstra’s Algorithm  
 Not only record the shortest distance, but also the path by storing the previous node.   
 ![image](https://cloud.githubusercontent.com/assets/14355257/19501766/1b4a55ba-9576-11e6-927b-9c02717798bc.png)  
@@ -62,5 +55,3 @@ Reference video: https://www.youtube.com/watch?v=4OQeCuLYj-4
 ![image](https://cloud.githubusercontent.com/assets/14355257/19501799/4ae8d292-9576-11e6-8719-4b7481b67b91.png)  
 ![image](https://cloud.githubusercontent.com/assets/14355257/19501801/4ecc6b1c-9576-11e6-8f09-139174a6909c.png)  
 ![image](https://cloud.githubusercontent.com/assets/14355257/19501808/568fbcbe-9576-11e6-9be2-8d7ba2ef437c.png)  
-
-Prim

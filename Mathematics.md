@@ -1,4 +1,4 @@
-##Euclidean Algorithm for Greatest Common Divisor (GCD)  
+## Euclidean Algorithm for Greatest Common Divisor (GCD)  
 gcd(a, b) = gcd(a, b − a)  
   
 Example:  
@@ -11,7 +11,7 @@ Example:
   
 Running time: O(log(a + b))  
   
-##Modular Inverse:
+## Modular Inverse:
 a x ≡ 1 (mod m)
 
 Input:  a = 3, m = 11
